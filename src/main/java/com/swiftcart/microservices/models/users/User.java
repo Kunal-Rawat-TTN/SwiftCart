@@ -48,13 +48,13 @@ public class User {
     @NotBlank
     private String password;
 
-    private boolean isDeleted;
+    private Boolean isDeleted;
 
     @ColumnDefault("true")
-    private boolean isActive;
+    private Boolean isActive;
 
-    private boolean isExpired;
-    private boolean isLocked;
+    private Boolean isExpired;
+    private Boolean isLocked;
 
     private Integer invalidAttemptCount;
 
