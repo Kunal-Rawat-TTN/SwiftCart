@@ -1,5 +1,6 @@
 package com.swiftcart.microservices.models.users;
 
+import com.swiftcart.microservices.models.orders.Orders;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -13,6 +14,7 @@ import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.validator.constraints.Length;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -60,4 +62,27 @@ public class User {
 
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime passwordUpdateDate;
+
+    //No cascading required because role is an entity which can exist on its own
+    @ManyToMany(mappedBy = "users")
+    private Set<Role> roles;
+
+
+    //OrphanRemoval is true, because if user remove any address from its collection then it must be removed from the db
+    //Don't think address should have a reference of the user
+    //Cascade all because if user is deleted then its address must be deleted
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "user_id")
+    private Set<Address> addresses;
+
+    //once ordered then order can't be removed from history, that's why orphan removal is not true
+    //Bi directional bcz user data must be fetched by using user reference
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<Orders> orders;
+
+    //once reviewed then review can't be removed from history, that's why orphan removal is not true
+    //Bi directional bcz user data must be fetched by using user reference
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+//    @JoinColumn(name = "user_id")
+//    private Set<Pr> productReviews;
 }
