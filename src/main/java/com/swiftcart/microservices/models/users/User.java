@@ -1,4 +1,4 @@
-package com.swiftcart.microservices.models;
+package com.swiftcart.microservices.models.users;
 
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
@@ -37,26 +37,26 @@ public class User {
     private String firstName;
 
     @Nullable
-    String middleName;
+    private String middleName;
 
     @NotNull
     @NotBlank
     @Length(min = 2, max = 15)
-    String lastName;
+    private String lastName;
 
     @NotNull
     @NotBlank
-    String password;
+    private String password;
 
-    boolean isDeleted;
+    private boolean isDeleted;
 
     @ColumnDefault("true")
-    boolean isActive;
+    private boolean isActive;
 
-    boolean isExpired;
-    boolean isLocked;
+    private boolean isExpired;
+    private boolean isLocked;
 
-    Integer invalidAttemptCount;
+    private Integer invalidAttemptCount;
 
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime passwordUpdateDate;
