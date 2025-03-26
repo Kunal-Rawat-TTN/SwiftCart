@@ -46,4 +46,7 @@ public class Address {
     @NotNull
     @NotBlank
     private String label;
+
+    private Boolean isSellerAddress;
+    private Boolean isCustomerAddress;
 }
