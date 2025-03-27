@@ -1,6 +1,7 @@
 package com.swiftcart.microservices.models.categories;
 
 import com.swiftcart.microservices.models.products.Product;
+import com.swiftcart.microservices.models.products.ProductReview;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -33,4 +34,8 @@ public class Category {
     //Didn't use many to many mapping to reduce the complexity
     @OneToMany(mappedBy = "category", orphanRemoval = true)
     private Set<Product> products;
+
+    //Bidirectional bcz category data must be fetched by using category reference
+    @OneToMany(mappedBy = "category", orphanRemoval = true,cascade = CascadeType.REMOVE)
+    private Set<CategoryMetadataFieldValues> categoryMetadataFieldValues;
 }
