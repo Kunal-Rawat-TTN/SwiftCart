@@ -1,6 +1,7 @@
 package com.swiftcart.microservices.models.users;
 
 import com.swiftcart.microservices.models.orders.Orders;
+import com.swiftcart.microservices.models.products.ProductReview;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -57,6 +58,8 @@ public class User {
 
     private Boolean isExpired;
     private Boolean isLocked;
+    private Boolean isSeller;
+    private Boolean isCustomer;
 
     private Integer invalidAttemptCount;
 
@@ -82,7 +85,6 @@ public class User {
 
     //once reviewed then review can't be removed from history, that's why orphan removal is not true
     //Bi directional bcz user data must be fetched by using user reference
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-//    @JoinColumn(name = "user_id")
-//    private Set<Pr> productReviews;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<ProductReview> productReviews;
 }
