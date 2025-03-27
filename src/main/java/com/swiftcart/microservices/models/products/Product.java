@@ -60,4 +60,8 @@ public class Product {
     //Bi directional bcz product data must be fetched by using product reference
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private Set<ProductReview> productReviews;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private Set<ProductVariation> productVariations;
+
 }

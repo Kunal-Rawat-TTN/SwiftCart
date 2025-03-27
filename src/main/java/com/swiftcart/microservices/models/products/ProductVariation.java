@@ -1,13 +1,12 @@
 package com.swiftcart.microservices.models.products;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.UUID;
 
 @Entity
 @Getter
@@ -16,10 +15,16 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ProductVariation {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
+    private Double price;
     private Integer quantity;
 //    private JSON
+    private String primaryImageName;
     private Boolean isActive;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    Product product;
 }
