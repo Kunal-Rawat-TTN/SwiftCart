@@ -1,6 +1,5 @@
 package com.swiftcart.microservices.models.users;
 
-import jakarta.annotation.Nullable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
