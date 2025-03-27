@@ -30,4 +30,7 @@ public class OrderProduct {
 
     private Integer quantity;
     private Double price;
+
+    @OneToOne(mappedBy = "orderProduct")
+    private OrderStatus orderStatus;
 }
