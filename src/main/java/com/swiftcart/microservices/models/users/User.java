@@ -78,10 +78,12 @@ public class User {
     @JoinColumn(name = "user_id")
     private Set<Address> addresses;
 
+
     //once ordered then order can't be removed from history, that's why orphan removal is not true
     //Bi directional bcz user data must be fetched by using user reference
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Orders> orders;
+
 
     //once reviewed then review can't be removed from history, that's why orphan removal is not true
     //Bi directional bcz user data must be fetched by using user reference
