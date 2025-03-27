@@ -1,11 +1,13 @@
 package com.swiftcart.microservices.models.products;
 
+import com.swiftcart.microservices.models.orders.OrderProduct;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -27,4 +29,7 @@ public class ProductVariation {
     @ManyToOne
     @JoinColumn(name = "product_id")
     Product product;
+
+    @OneToMany(mappedBy = "productVariation")
+    Set<OrderProduct> orderProducts;
 }
