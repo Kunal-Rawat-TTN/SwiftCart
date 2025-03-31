@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @AllArgsConstructor
-@NoArgsConstructor
 public enum CustomOrderStatus {
     ORDER_PLACED,
     CANCELLED,
@@ -22,5 +21,4 @@ public enum CustomOrderStatus {
     PICK_UP_INITIATED,
     PICK_UP_COMPLETED,
     REFUND_COMPLETED
-
 }

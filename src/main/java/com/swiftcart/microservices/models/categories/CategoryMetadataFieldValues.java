@@ -16,7 +16,7 @@ public class CategoryMetadataFieldValues {
     @EmbeddedId
     CategoryMetadataFieldValuesId categoryMetadataFieldValuesId;
 
-    private String values;
+    private String categoryMetadataValues;
 
     @ManyToOne
     @MapsId("categoryId")
